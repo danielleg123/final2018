@@ -11,7 +11,7 @@ require(tigerstats)
 abac <-read.csv(file="abacavirinol.csv",header=TRUE)
 lgbtGrp <- filter(abac,LBGT=="yes")
 allfemales <- filter(abac,sex=="F")
-allmeales <- filter(abac,sex =="M")
+allmales <- filter(abac,sex =="M")
 alldruguser <- filter(abac,Ivdrug=="user")
 ```
 
@@ -25,27 +25,34 @@ A new  preventative aides (abacavirinol) is under test in clinical trials. Analy
 # ch 1 the group ia the all abac with the xtabs
 
 ```{r}
-all <- xtabs(~infected+ treatment, data = abac)
+resultsabac<- xtabs(~infected+ treatment, data = abac)
 ```
+  
+This group of the xtabs with all the abac and the infected and treatment.
 # Graphchart 
 ```{r}
-barchartGC(all,type = "percent")
+barchartGC(resultsabac,type = "percent")
 ```
+  
+The people that got aids while takeing the drug is 40 percent and the people that take the placebo that got aids is 50 percent.The people that didn't get aids while taking the drug is 49 percent and the people that didn't git aids while taking the placebo is 50 percent.The people that was taking the drug was stile getting aids.More people that was taking the placebo did get aids.And the people thatdidn't git aids that was was taking the drugs is a little low then the people that took the placebo. 
 # Chisqtest
 ```{r}
-chisqtestGC(all, graph = TRUE)
-
+chisqtestGC(resultsabac, graph = TRUE)
 ```
+  
+The oberved counts treament and infected the people that took the drugs 97 of them got aids where the people that took the placebo 140 of them got aids.The people that that took the drug that didn't get aids is 2303 the tthe people that took the pleacebo that didn't get aids is 2405.45.The couts expected by null treatment infected the that took the drug got aids is 115.45 and the people that took the placebo is 121.55 that got aids. The people that took the drug that didn't get aids is 2284.55 where the people that took the placebo that didn't get aids is 2405.45. The contributions to the chi -square statistic treatment and infected the people that took the drugs that got aids is 2.95 and the people that took the placebo that got aids is 2.80. the people that didn't git aids that took the drug is 0.15 and the people that took the placebo that didn't git aids is 0.14. The chi-square statistic equals to 5.7138, the degrees of freedom of the table equales 1, the p-value equals 0.0168 so it rejeting the h.
 # Fisher.test
 ```{r}
-fisher.test(all)
+fisher.test(resultsabac)
 ```
+  
+With the fisher test we are rejeting the hypothesis because the p-value is 0.01634.
 ### Numerical Descriptive Results
 ```{r}
-colPerc(results)
-rowPerc(results)
+colPerc(resultsabac)
+rowPerc(resultsabac)
 ```
-
+The colperc the peole that took the drug that got aids is 4.04 and the people that took the placebo that got aids is 5.54. The people that took the drug that didn;t git aids is 95.96 and the people that took the placebo that diddn't git the aids is 94.46. The rowperc the people that took the drug that got the aids is 40.93 and the peole that took the placebo that got the aids is 59.07. The people that didn't git aids is 49.10 and the people that toock the placebo that didn't git aids is 50.90. 
 
 
 
@@ -53,103 +60,146 @@ rowPerc(results)
 
 # ch 2 the group ia the allfemales abac with the xtabs
 ```{r}
-allfemales <- xtabs(~infected+ treatment, data = allfemales )
+results <- xtabs(~infected+ treatment, data = allfemales )
 ```
+  
+This group of the xtabs with all the females from abac and the infected and treatment.
 # Graphchart 
 ```{r}
-barchartGC(allfemales,type = "percent")
+barchartGC(results,type = "percent")
 ```
+  
+The people that got aids while takeing the drug is 60 percent and the people that take the placebo that got aids is 40 percent.The people that didn't get aids while taking the drug is 49 percent and the people that didn't git aids while taking the placebo is 50 percent.The people that was taking the drug was stile getting aids.More people that was taking the placebo did get aids.And the people that didn't git aids that was was taking the drugs is a little low then the people that took the placebo.
 
 # Chisqtest
 ```{r}
-chisqtestGC(allfemales, graph = TRUE)
+chisqtestGC(results, graph = TRUE)
 ```
+  
+The oberved counts treament and infected the people that took the drugs 51 of them got aids where the people that took the placebo 35 of them got aids.The people that that took the drug that didn't get aids is 1237 the tthe people that took the pleacebo that didn't get aids is 1315.The couts expected by null treatment infected the that took the drug got aids is 41.99 and the people that took the placebo is 44.01 that got aids. The people that took the drug that didn't get aids is 1246.01 where the people that took the placebo that didn't get aids is 1305.99.The contributions to the chi -square statistic treatment and infected the people that took the drugs that got aids is 1.93 and the people that took the placebo that got aids is 1.84. the people that didn't git aids that took the drug is 0.07 and the people that took the placebo that didn't git aids is 0.06 . The chi-square statistic equals to 3.4843, the degrees of freedom of the table equales 1, the p-value equals 0.062 so it rejeting the h.
+
 # Fisher.test
 ```{r}
-fisher.test(allfemales)
+fisher.test(results)
 ```
+  
+With the fisher test we are rejeting the hypothesis because the p-value is 0.04911.
+
 ### Numerical Descriptive Results
 ```{r}
 colPerc(results)
 rowPerc(results)
 ```
-
-
-
+  
+The colperc the peole that took the drug that got aids is 3.96 and the people that took the placebo that got aids is 2.59. The people that took the drug that didn;t git aids is 96.04 and the people that took the placebo that diddn't git the aids is 97.41. The rowperc the people that took the drug that got the aids is 59.30 and the peole that took the placebo that got the aids is 40.70. The people that didn't git aids is 48.47 and the people that toock the placebo that didn't git aids is 51.53.
 
 
 
 # ch 3 the group ia the allmales abac with the xtabs
 ```{r}
-allmales <- xtabs(~infected+ treatment, data = allmeales)
+results <- xtabs(~infected+ treatment, data = allmales)
 ```
+  
+This group of the xtabs with all the males abac and the infected and treatment.
 # Graphchart
 ```{r}
-barchartGC(allmales,type = "percent")
+barchartGC(results,type = "percent")
 ```
+  
+The people that got aids while takeing the drug is 25 percent and the people that take the placebo that got aids is 90 percent.The people that didn't get aids while taking the drug is 45 percent and the people that didn't git aids while taking the placebo is 45 percent.The people that was taking the drug was stile getting aids.More people that was taking the placebo did get aids.And the people that didn't git aids that was was taking the drugs is equal to the same as the people that where taking the placebo.
+
 # Chisqtest
 ```{r}
-chisqtestGC(allmales, graph = TRUE)
+chisqtestGC(results, graph = TRUE)
 ```
+  
+The oberved counts treament and infected the people that took the drugs 46 of them got aids where the people that took the placebo 105 of them got aids.The people that that took the drug that didn't get aids is 1066 the tthe people that took the pleacebo that didn't get aids is 1072.The couts expected by null treatment infected the that took the drug got aids is 73.36 and the people that took the placebo is 77.64 that got aids. The people that took the drug that didn't get aids is 1038.64. where the people that took the placebo that didn't get aids is 1099.36.The contributions to the chi -square statistic treatment and infected the people that took the drugs that got aids is 10.20 and the people that took the placebo that got aids is 9.64. the people that didn't git aids that took the drug is 0.07 and the people that took the placebo that didn't git aids is 0.68 . The chi-square statistic equals to 20.4718, the degrees of freedom of the table equales 1, the p-value equals 0. so it equal rejeting  the h.
+
 # Fisher.test
 ```{r}
-fisher.test(allmales)
+fisher.test(results)
 ```
+  
+With the fisher test we are rejeting the hypothesis because the p-value is 0.000004352.
+
 ### Numerical Descriptive Results
 ```{r}
 colPerc(results)
 rowPerc(results)
 ```
-
+  
+The colperc the peole that took the drug that got aids is 4.14 and the people that took the placebo that got aids is 8.92. The people that took the drug that didn't git aids is 95.86 and the people that took the placebo that diddn't git the aids is 91.08. The rowperc the people that took the drug that got the aids is 30.46 and the peole that took the placebo that got the aids is 69.54. The people that didn't git aids is 49.86 and the people that toock the placebo that didn't git aids is 50.14.
 
 
 
 
 # ch 4 the group ia the alldruguser abac with the xtabs
 ```{r}
-alldruguser <- xtabs(~infected+ treatment, data = alldruguser)
+results <- xtabs(~infected+ treatment, data = alldruguser)
 ```
+  
+This group of the xtabs with all the  all the druguser abac and the infected and treatment.
 # Grapghchart
 ```{r}
-barchartGC(alldruguser,type = "percent")
+barchartGC(results,type = "percent")
 ```
+  
+The people that got aids while takeing the drug is 23 percent and the people that take the placebo that got aids is 90 percent.The people that didn't get aids while taking the drug is 45 percent and the people that didn't git aids while taking the placebo is 47 percent.The people that was taking the drug was stile getting aids.More people that was taking the placebo did get aids.And the people that didn't git aids that was was taking the drugs is less then the people that was taking the placebo.
+
 # Chisqtest
 ```{r}
-chisqtestGC(alldruguser, graph = TRUE)
+chisqtestGC(results, graph = TRUE)
 ```
+  
+The oberved counts treament and infected the people that took the drugs 10 of them got aids where the people that took the placebo 29 of them got aids.The people that that took the drug that didn't get aids is 305 the tthe people that took the pleacebo that didn't get aids is 363.The couts expected by null treatment infected the that took the drug got aids is 17.38 and the people that took the placebo is 21.62 that got aids. The people that took the drug that didn't get aids is 297.62. where the people that took the placebo that didn't get aids is 370.38.The contributions to the chi -square statistic treatment and infected the people that took the drugs that got aids is 3.13 and the people that took the placebo that got aids is 2.52. the people that didn't git aids that took the drug is 0.18 and the people that took the placebo that didn't git aids is 0.15 . The chi-square statistic equals to 5.1942, the degrees of freedom of the table equales 1, the p-value equals 0.0227 so it equal rejeting the h.
+
 # Fisher.test
 ```{r}
-fisher.test(alldruguser)
+fisher.test(results)
 ```
+  
+With the fisher test we are rejeting the hypothesis because the p-value is 0.01929.
+
 ### Numerical Descriptive Results
 ```{r}
 colPerc(results)
 rowPerc(results)
 ```
-
+  
+The colperc the peole that took the drug that got aids is 3.17 and the people that took the placebo that got aids is 7.4. The people that took the drug that didn't git aids is 96.83 and the people that took the placebo that diddn't git the aids is 92.6. The rowperc the people that took the drug that got the aids is 25.64 and the peole that took the placebo that got the aids is 74.36. The people that didn't git aids is 45.66 and the people that toock the placebo that didn't git aids is 54.34.
 
 
 
 
 # ch 5 the group ia the lgbtgrp with the xtabs
 ```{r}
-allGRP <- xtabs(~infected+ treatment, data = lgbtGrp)
+results <- xtabs(~infected+ treatment, data = lgbtGrp)
 ```
+  
+This group of the xtabs with all the lgdtgrp and the infected and treatment.
 # Grapghchart
 ```{r}
-barchartGC(allGRP,type = "percent")
+barchartGC(results,type = "percent")
 ```
+  
+The people that got aids while takeing the drug is 90 percent and the people that take the placebo that got aids is 25 percent.The people that didn't get aids while taking the drug is 45 percent and the people that didn't git aids while taking the placebo is 44 percent.The people that was taking the drug was stile getting aids.More people that was taking the placebo did get aids.And the people that didn't git aids that was was taking the drugs is 1 percent higher then the the people that took the placebo.
+
 # Chisqtest
 ```{r}
-chisqtestGC(allGRP, graph = TRUE)
+chisqtestGC(results, graph = TRUE)
 ```
+  
+The oberved counts treament and infected the people that took the drugs 20 of them got aids where the people that took the placebo 9 of them got aids.The people that that took the drug that didn't get aids is 287 the tthe people that took the pleacebo that didn't get aids is 285.The couts expected by null treatment infected the that took the drug got aids is 14.81 and the people that took the placebo is 14.19 that got aids. The people that took the drug that didn't get aids is 292.19. where the people that took the placebo that didn't get aids is 279.81.The contributions to the chi -square statistic treatment and infected the people that took the drugs that got aids is 1.82 and the people that took the placebo that got aids is 1.90. the people that didn't git aids that took the drug is 0.09 and the people that took the placebo that didn't git aids is 0.10. The chi-square statistic equals to 3.1843, the degrees of freedom of the table equales 1, the p-value equals 0.0743 so it equal to the h.
 # Fisher.test
 ```{r}
-fisher.test(allGRP)
+fisher.test(results)
 ```
+  
+With the fisher test we are exating the hypothesis because the p-value is 0.05698.
 ### Numerical Descriptive Results
 ```{r}
 colPerc(results)
 rowPerc(results)
 ```
-
+  
+The colperc the peole that took the drug that got aids is 6.51 and the people that took the placebo that got aids is 3.06. The people that took the drug that didn't git aids is 93.49 and the people that took the placebo that diddn't git the aids is 96.94. The rowperc the people that took the drug that got the aids is 68.97 and the peole that took the placebo that got the aids is 31.03. The people that didn't git aids is 50.17 and the people that toock the placebo that didn't git aids is 49.83.
